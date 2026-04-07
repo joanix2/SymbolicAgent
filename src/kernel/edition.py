@@ -17,10 +17,7 @@ class Edition:
             return
         self.crop_mode = True
         self.canvas.crop_mode = True
-        messagebox.showinfo(
-            "Crop",
-            "Cliquez et glissez pour sélectionner la zone.\nEntrée pour valider, Échap pour annuler.",
-        )
+        self.canvas.config(cursor="crosshair")
 
     def confirm_crop(self):
         if not self.crop_mode:

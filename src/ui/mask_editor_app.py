@@ -35,7 +35,7 @@ class MaskEditorApp(tk.Tk):
         self.center_panel = ttk.Frame(self, padding=(0, 8, 0, 8))
         self.center_panel.grid(row=0, column=1, sticky="nsew")
 
-        self.right_panel = ActionPanel(self, k)
+        self.right_panel = ActionPanel(self, self.kernel)
         self.right_panel.grid(row=0, column=2, sticky="nse")
 
         self._build_center_panel()

@@ -43,6 +43,4 @@ class ImageImport:
         self.original_image = img.copy()
         self.image = img
         self.mask = Image.new("L", img.size, 0)
-        self.app.fullscreen_mode = False
-        self.app._toggle_panels()
         self.update_preview()
