@@ -4,14 +4,24 @@ from tkinter import ttk
 class ActionPanel(ttk.Frame):
     """Panneau droit : boutons d'actions et aide contextuelle."""
 
-    def __init__(self, parent, *, callbacks, panel_width):
-        super().__init__(parent, width=panel_width, padding=10)
+    def __init__(self, parent, kernel):
+        super().__init__(parent, width=220, padding=10)
         self.grid_propagate(False)
-        self._panel_width = panel_width
-        self._build(callbacks)
+        self._build(kernel)
 
-    def _build(self, callbacks):
+    def _build(self, kernel):
         ttk.Label(self, text="Actions", font=("Arial", 12, "bold")).pack(anchor="w", pady=(0, 8))
+
+        callbacks = [
+            ("Capturer zone", kernel.start_capture),
+            ("Charger image", kernel.load_image),
+            ("Crop", kernel.open_crop),
+            ("Inverser couleurs", kernel.invert_colors),
+            ("Masque tout vider", kernel.clear_mask),
+            ("Masque tout remplir", kernel.fill_mask),
+            ("Sauvegarder image", kernel.save_image),
+            ("Sauvegarder masque", kernel.save_mask),
+        ]
 
         for text, command in callbacks:
             ttk.Button(self, text=text, command=command).pack(fill="x", pady=4)
@@ -28,5 +38,5 @@ class ActionPanel(ttk.Frame):
                 "• Bucket remove : retire une zone proche"
             ),
             justify="left",
-            wraplength=self._panel_width - 20,
+            wraplength=200,
         ).pack(anchor="w")

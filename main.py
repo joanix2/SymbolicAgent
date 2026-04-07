@@ -2,7 +2,7 @@ import sys
 from tkinter import messagebox
 from PIL import Image
 
-from src.mask_editor_app import MaskEditorApp
+from src.ui.mask_editor_app import MaskEditorApp
 
 
 def main():
@@ -14,10 +14,10 @@ def main():
         if image_path:
             try:
                 img = Image.open(image_path).convert("RGB")
-                app.original_image = img.copy()
-                app.image = img
-                app.mask = Image.new("L", app.image.size, 0)
-                app.after(100, app.update_preview)
+                app.kernel.original_image = img.copy()
+                app.kernel.image = img
+                app.kernel.mask = Image.new("L", img.size, 0)
+                app.after(100, app.kernel.update_preview)
             except Exception as exc:
                 messagebox.showerror("Erreur chargement image", str(exc))
 
