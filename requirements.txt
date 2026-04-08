@@ -1,4 +1,7 @@
 annotated-doc==0.0.4
+spacy>=3.7
+pyspellchecker>=0.8
+lark>=1.2
 click==8.3.2
 markdown-it-py==4.0.0
 mdurl==0.1.2
