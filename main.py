@@ -2,7 +2,7 @@ import sys
 from tkinter import messagebox
 from PIL import Image
 
-from src.ui.mask_editor_app import MaskEditorApp
+from src.workers.vision.ui.mask_editor_app import MaskEditorApp
 
 
 def main():
